@@ -47,6 +47,34 @@
 <li>Prostřednictvím SDS je ovládán vytvořený rozšiřující modul RegHeat RS485, který ovládá termoelektrické pohony radiátorů</li>
 </ul>
 
+
+<h3>Instalace</h3>
+<p>Nejprve je třeba projekt nakopírovat do adresáře webového serveru (je nutné mít funkční LAMP server)</p>
+<pre><code>$ mkdir /cesta/k_webovému_serveru/regheat
+$ cd /cesta/k_webovému_serveru/regheat
+$ git clone git://github.com/VaclavBobek/RegHeat.git
+</code></pre>
+
+<p>Vytvoření databáze regheat v MySQL např. pomocí nástroje phpMyAdmin nebo ručně:</p>
+<pre><code>$ mysql -u root -p
+CREATE DATABASE regheat
+	CHARACTER SET utf8
+	COLLATE utf8_czech_ci;
+</code></pre>
+
+<p>Nakopírování tabulek projektu do vytvořené databáze regheat</p>
+<pre><code>mysql -u root -pHESLO regheat --default-character-set=utf8 
+	< /cesta/k_webovému_serveru/regheat/db/regheat.sql 
+</code></pre>
+
+<h3>Konfigurace</h3>
+<p>Je zapotřebí provést změnu těchto konfiguračních souborů:</p>
+<ul>
+<li>/inc/constants.php</li>
+<li>/inc/connect.php</li>
+
+
+</ul>
 <h3>Autor</h3>
 
 <p>Můj profil na GitHub (<a href="https://github.com/VaclavBobek" class="user-mention">@VaclavBobek</a>)</p>
