@@ -37,13 +37,15 @@
 <h3>Náhled projektu</h3>
 
 <img src="images/control_panel.png"/>
+<br/>
+<img src="images/stats_graphs.png"/>
 <h3>Možnosti projektu</h3>
 <ul>
 <li>Týdení program teplot</li>
 <li>Libovolný počet změn</li>
 <li>Přehledový panel, grafy teplot, trendy</li>
 <li>Statistiky</li>
-<li>RegHeat dokáže spolupracovat se zařízením SDS MICRO/MACRO českého výrobce <a href="https:http://www.onlinetechnology.cz">http://www.onlinetechnology.cz/</a></li>
+<li>RegHeat dokáže spolupracovat se zařízením SDS MICRO/MACRO českého výrobce <a href="http://www.onlinetechnology.cz">http://www.onlinetechnology.cz/</a></li>
 <li>Prostřednictvím SDS je ovládán vytvořený rozšiřující modul RegHeat RS485, který ovládá termoelektrické pohony radiátorů</li>
 </ul>
 
@@ -72,23 +74,26 @@ CREATE DATABASE regheat
 <ul>
 <li>/inc/constants.php</li>
 <li>/inc/connect.php</li>
-
-
 </ul>
+
+<p>Vytvoření crontabu pro spouštění rutinních sktiptů:</p>
+<pre><code>[regheat@RegHeat ~]$ crontab -e
+*/1 * * * * cd /srv/http/regheat/scripts && php load_temp.php
+*/1 * * * * cd /srv/http/regheat/scripts && php control_temperature.php
+*/8 * * * * cd /srv/http/regheat/scripts && php generate_db_stats.php
+*/10 * * * * cd /srv/http/regheat/grafy && php index.php
+*/15 * * * * cd /srv/http/regheat/grafy && php stats_graphs.php
+</code></pre>
+cesty k jednotlivým souborům je třeba upravit dle vašich potřeb.
+
 <h3>Autor</h3>
 
 <p>Můj profil na GitHub (<a href="https://github.com/VaclavBobek" class="user-mention">@VaclavBobek</a>)</p>
       
-<h3>Klon projektu</h3>
-<p>Klon projektu můžete jednoduše získat pomocí programu git, nebo můžete projekt stáhnout jako .zip nebo .tar.gz</p>
-<pre><code>$ mkdir RegHeat
-$ git clone git://github.com/VaclavBobek/RegHeat.git
-</code></pre>
-
 
 <h3>Licence</h3>
 
-<p>Projekt je pod licencí GNU/GPL</p>
+<p>Projekt je pod licencí GNU/GPL. Stáhněte jej, používejte, upravte podle vašich potřeb.</p>
 
 
       </section>
